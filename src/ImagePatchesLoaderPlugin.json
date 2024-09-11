@@ -1,0 +1,6 @@
+{
+    "name" : "Image Patches Loader",
+    "menuName" : "Example (.xmp)",
+    "version" : "1.1",
+    "dependencies" : ["Points"]
+}
