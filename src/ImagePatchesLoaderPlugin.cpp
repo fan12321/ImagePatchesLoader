@@ -68,18 +68,12 @@ void ImagePatchesLoaderPlugin::loadData()
         }
     }
 
-    auto rootFolder = mv::data().createDataset<Text>("Text", "Root folder");
-    std::vector<QString> rootFolder_stdvec{_rootFolder};
-    rootFolder->addColumn("root folder", rootFolder_stdvec);
-
-    auto filenames = mv::data().createDataset<Text>("Text", "Filenames", rootFolder);
+    auto filenames = mv::data().createDataset<Text>("Text", _rootFolder.split('/').last());
     std::vector<QString> filenameVec(filenameSet.begin(), filenameSet.end());
     filenames->addColumn(imageDir, filenameVec);
 
-    events().notifyDatasetAdded(rootFolder);
     events().notifyDatasetAdded(filenames);
 
-    // qDebug() << filenames->getColumnNames()[0];
 }
 
 ImagePatchesLoaderPlugin* ImagePatchesLoaderPluginFactory::produce()
