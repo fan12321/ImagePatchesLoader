@@ -17,6 +17,23 @@ public:
     
     void init() override;
 
+    // Could be either of the following...
+    // 1.)
+    // ├──root folder
+    //     └──images
+    //         ├──img_0
+    //         ├──img_1
+    //         ├──img_2
+    //         └── ...
+    // 2.)
+    // ├──root folder
+    //     ├──image_0
+    //         └──img_0
+    //     ├──image_1
+    //         └──img_1
+    //     ├──image_2
+    //         └──img_2
+    //     └── ...
     void loadData() Q_DECL_OVERRIDE;
 
 private:
