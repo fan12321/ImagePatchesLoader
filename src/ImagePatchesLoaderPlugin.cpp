@@ -61,9 +61,14 @@ void ImagePatchesLoaderPlugin::loadData()
     std::set<QString> filenameSet;
     for (const auto & entry: std::filesystem::directory_iterator(_rootFolder.toStdString())) {
         if (std::filesystem::is_directory(entry)) {
-            imageDir = entry.path().c_str();
-            for (const auto &filename: std::filesystem::directory_iterator(imageDir.toStdString())) {
-                filenameSet.insert(filename.path().c_str());
+            // imageDir = entry.path().c_str();
+            // for (const auto &filename: std::filesystem::directory_iterator(imageDir.toStdString())) {
+            //     filenameSet.insert(filename.path().c_str());
+            // }
+            // imageDir = QString::fromStdWString(entry.path().wstring());
+
+            for (const auto& filename : std::filesystem::directory_iterator(entry.path())) {
+                filenameSet.insert(QString::fromStdWString(filename.path().wstring()));
             }
         }
     }
